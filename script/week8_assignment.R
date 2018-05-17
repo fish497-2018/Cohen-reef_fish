@@ -14,3 +14,12 @@ ggplot(reef_fish, aes(Diver, Family)) +
 ggplot(reef_fish, aes(Diver, Total)) +
   geom_point() +
   facet_wrap("Family")
+
+#by site
+ggplot(reef_fish, aes(Total)) +
+  geom_histogram() +
+  facet_wrap("Site")
+
+CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == CG10)
+
