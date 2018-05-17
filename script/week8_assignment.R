@@ -23,4 +23,11 @@ ggplot(reef_fish, aes(Total)) +
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG10")
 
+#create a graph with the new data set
+ggplot(CG10_site, aes(Diver, Total)) + 
+  geom_point() 
+
+ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family")
 
