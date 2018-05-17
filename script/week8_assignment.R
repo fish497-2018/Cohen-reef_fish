@@ -9,3 +9,5 @@ View(reef_fish)
 #start looking for a trend in data
 ggplot(reef_fish, aes(Depth)) +
   geom_histogram()
+ggplot(reef_fish, aes(Diver, Family)) +
+  geom_point()
