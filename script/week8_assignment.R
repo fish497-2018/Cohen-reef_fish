@@ -11,3 +11,6 @@ ggplot(reef_fish, aes(Depth)) +
   geom_histogram()
 ggplot(reef_fish, aes(Diver, Family)) +
   geom_point()
+ggplot(reef_fish, aes(Diver, Total)) +
+  geom_point() +
+  facet_wrap("Family")
