@@ -21,5 +21,6 @@ ggplot(reef_fish, aes(Total)) +
   facet_wrap("Site")
 
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
-  filter(SiteCode == CG10)
+  filter(SiteCode == "CG10")
+
 
