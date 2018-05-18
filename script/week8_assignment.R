@@ -23,11 +23,37 @@ ggplot(reef_fish, aes(Total)) +
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG10")
 
+CG10_site_large <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG10") %>% 
+  filter(Total > 7)
+
 #create a graph with the new data set
 ggplot(CG10_site, aes(Diver, Total)) + 
+  geom_point()
+
+ggplot(CG10_site_large, aes(Diver, Total)) + 
   geom_point() 
 
 ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
   geom_point() +
   facet_wrap("Family")
 
+ggplot(CG10_site_large, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family")
+
+#Another site to see how it compares
+CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG11") 
+
+CG11_site_large <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG11") %>% 
+  filter(Total > 7)
+
+ggplot(CG11_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family")
+
+ggplot(CG11_site_large, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family")
