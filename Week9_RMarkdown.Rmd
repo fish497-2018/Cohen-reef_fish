@@ -52,5 +52,13 @@ ggplot(CG10_site, aes(Diver, color = Diver)) +
   labs(x = "Diver", y = "Total_Fish_Count")
 ```
 
+Facet wrap by Family to see if there is a difference, see if the counts are high for a single Family or if there is a bias
 
+```{r}
+ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family") +
+  labs(x = "Diver", y = "Total_Fish_Count", color = "Divers")
+```
+**DJA** is the only diver to see *Pempherididae* and sees 220 during a dive and 5 during another. Is the only one to see *Orectolobidae*. Also sees a high count of *Cheilodactylidae*. **RSS** is the only diver to see both *Bercidae* and *Dinolestidae*. **SRT** is the only diver to see *Scianidae* and *Scorpaenidae*.
 
