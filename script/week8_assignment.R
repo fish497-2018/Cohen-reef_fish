@@ -28,8 +28,12 @@ CG10_site_large <- select(reef_fish, SiteCode, Diver, Family, Total) %>%
   filter(Total > 7)
 
 #create a graph with the new data set
-ggplot(CG10_site, aes(Diver, Total)) + 
+ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
   geom_point() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+
+ggplot(CG10_site, aes(Diver, color = Diver)) + 
+  geom_bar() +
   labs(x = "Diver", y = "Total_Fish_Count")
 
 ggplot(CG10_site_large, aes(Diver, Total)) + 
@@ -63,4 +67,6 @@ ggplot(CG11_site_large, aes(Diver, Total, color = Diver)) +
   geom_point() +
   facet_wrap("Family") +
   labs(x = "Diver", y = "Total_Fish_Count", color = "Divers")
+
+install.packages("rmarkdown")
 
