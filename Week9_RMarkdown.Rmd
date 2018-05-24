@@ -24,4 +24,15 @@ reef_fish <- read.csv("data/RLSreeffishdataset.csv")
 head(reef_fish)
 ```
 
+Because the data is so large when I first made graphs they did not show any real information. So I then only focused on the first 2 sites *CG10* and *CG11*
+
+```{r}
+CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG10")
+head(CG10_site)
+
+CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG11")
+head(CG11_site)
+```
 
