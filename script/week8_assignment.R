@@ -54,6 +54,14 @@ ggplot(CG10_site_large, aes(Diver, Total, color = Diver)) +
 CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG11") 
 
+ggplot(CG11_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+
+ggplot(CG11_site, aes(Diver, color = Diver)) + 
+  geom_bar() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+
 CG11_site_large <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG11") %>% 
   filter(Total > 7)
