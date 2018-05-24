@@ -36,3 +36,21 @@ CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>%
 head(CG11_site)
 ```
 
+Graphing these new data sets. I want to see if there is an obvious bias in the divers if one counts more of one family than the others. I use a scatter plot to show the count of each entry that the Diver made and a bar graph to show the entries that the diver made.
+
+### Scatter plot
+```{r}
+ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+```
+
+### Bar Graph
+```{r}
+ggplot(CG10_site, aes(Diver, color = Diver)) + 
+  geom_bar() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+```
+
+
+
