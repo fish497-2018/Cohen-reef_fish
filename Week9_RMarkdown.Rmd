@@ -5,3 +5,17 @@ date: "5/24/2018"
 output: html_document
 ---
 
+#Required Packages
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+#Data
+```{r, cache=TRUE}
+reef_fish <- read.csv("data/RLSreeffishdataset.csv")
+head(reef_fish)
+```
+
+
