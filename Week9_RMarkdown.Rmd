@@ -24,7 +24,7 @@ reef_fish <- read.csv("data/RLSreeffishdataset.csv")
 head(reef_fish)
 ```
 
-Because the data is so large when I first made graphs they did not show any real information. So I then only focused on the first 2 sites *CG10* and *CG11*. I only wanted the columns SiteCode for identification, Diver, Family and Total count of fish of that family.
+Because the data is so large when I first made graphs they did not show any real information. So I then only focused on the first 2 sites Steves Bommie (668) *CG10* and SE lumps (66A) *CG11*. I only wanted the columns SiteCode for identification, Diver, Family and Total count of fish of that family.
 
 ```{r}
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
@@ -52,7 +52,8 @@ ggplot(CG10_site, aes(Diver, color = Diver)) +
   labs(x = "Diver", y = "Total_Fish_Count")
 ```
 
-Facet wrap by Family to see if there is a difference, see if the counts are high for a single Family or if there is a bias
+### Facet wrap by Family
+Want to see if there is a difference between what divers see at the sight, see if the counts are high for a single Family or if one diver counts more than all the others.
 
 ```{r}
 ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
@@ -62,3 +63,28 @@ ggplot(CG10_site, aes(Diver, Total, color = Diver)) +
 ```
 **DJA** is the only diver to see *Pempherididae* and sees 220 during a dive and 5 during another. Is the only one to see *Orectolobidae*. Also sees a high count of *Cheilodactylidae*. **RSS** is the only diver to see both *Bercidae* and *Dinolestidae*. **SRT** is the only diver to see *Scianidae* and *Scorpaenidae*.
 
+Now do the same graphs for the second site **CG11**
+
+### Scatter Plot of diver entries and their totals
+```{r}
+ggplot(CG11_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+```
+
+### Bar Graph of Diver entries
+```{r}
+ggplot(CG11_site, aes(Diver, color = Diver)) + 
+  geom_bar() +
+  labs(x = "Diver", y = "Total_Fish_Count")
+```
+
+### Facet Plots by family
+```{r}
+ggplot(CG11_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family") +
+  labs(x = "Diver", y = "Total_Fish_Count", color = "Divers")
+```
+
+Diver **SRT** has an entry for 12/15 species, **DJA** has 11/15, and **MC** has 7/15.
