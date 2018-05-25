@@ -78,3 +78,12 @@ ggplot(CG11_site_large, aes(Diver, Total, color = Diver)) +
 
 install.packages("rmarkdown")
 
+ggplot(CG11_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+
+ggplot(CG10_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
