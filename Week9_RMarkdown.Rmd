@@ -24,7 +24,20 @@ reef_fish <- read.csv("data/RLSreeffishdataset.csv")
 head(reef_fish)
 ```
 
-Because the data is so large when I first made graphs they did not show any real information. So I then only focused on the first 2 sites Steves Bommie (668) *CG10* and SE lumps (66A) *CG11*. I only wanted the columns SiteCode for identification, Diver, Family and Total count of fish of that family.
+Because the data is so large when I first made graphs they did not show any real information. 
+**Don't need to run these they don't show anything**
+```{r}
+ggplot(reef_fish, aes(Depth)) +
+  geom_histogram()
+ggplot(reef_fish, aes(Diver, Family)) +
+  geom_point()
+ggplot(reef_fish, aes(Diver, Total)) +
+  geom_point() +
+  facet_wrap("Family")
+```
+
+
+I then only focused on the first 2 sites Steves Bommie (668) *CG10* and SE lumps (66A) *CG11*. I only wanted the columns SiteCode for identification, Diver, Family and Total count of fish of that family. And made seperate dataframes for each.
 
 ```{r}
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
@@ -36,7 +49,7 @@ CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>%
 head(CG11_site)
 ```
 
-Graphing these new data sets. I want to see if there is an obvious bias in the divers if one counts more of one family than the others. I use a scatter plot to show the count of each entry that the Diver made and a bar graph to show the entries that the diver made.
+Graphing these new data sets. I want to see if there is an obvious bias in the divers if one counts more of one family than the others. I use a scatter plot to show the count of each entry that the Diver made and a bar graph to show the numeber of entries that the diver made.
 
 ### Scatter plot
 ```{r}
@@ -49,7 +62,7 @@ ggplot(CG10_site, aes(Diver, Total, color = Diver)) +
 ```{r}
 ggplot(CG10_site, aes(Diver, color = Diver)) + 
   geom_bar() +
-  labs(x = "Diver", y = "Total_Fish_Count")
+  labs(x = "Diver", y = "Entries")
 ```
 
 ### Facet wrap by Family
@@ -76,7 +89,7 @@ ggplot(CG11_site, aes(Diver, Total, color = Diver)) +
 ```{r}
 ggplot(CG11_site, aes(Diver, color = Diver)) + 
   geom_bar() +
-  labs(x = "Diver", y = "Total_Fish_Count")
+  labs(x = "Diver", y = "Entries")
 ```
 
 ### Facet Plots by family
