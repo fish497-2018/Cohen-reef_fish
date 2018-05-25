@@ -88,3 +88,24 @@ ggplot(CG11_site, aes(Diver, Total, color = Diver)) +
 ```
 
 Diver **SRT** has an entry for 12/15 species, **DJA** has 11/15, and **MC** has 7/15.
+
+I want to see the Families and counts that each Diver individually sees. Let us make a facet wrap by diver 
+
+
+## Site CG10
+```{r}
+ggplot(CG10_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+```
+
+
+## CG11
+```{r}
+ggplot(CG11_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+```
+
