@@ -18,7 +18,7 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Data
+# Data [^1]
 ```{r, cache=TRUE}
 reef_fish <- read.csv("data/RLSreeffishdataset.csv")
 head(reef_fish)
@@ -109,3 +109,5 @@ ggplot(CG11_site, aes(Family, Total, color = Family)) +
   labs(x = "Family", y = "Total_Fish_Count", color = "Family")
 ```
 
+
+[^1]: This data is really large so do not run code in the script that uses the whole data set. It will take a long time
