@@ -17,6 +17,13 @@ Rachel Cohen
 
 ## DATA for the project
 
+-Load all the packages
+```{r}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+```
+
 -```reef_fish <- read.csv('data/RLSreeffishdataset.csv')```
 - site CG10
 ```{r}
