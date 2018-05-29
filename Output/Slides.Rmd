@@ -1,0 +1,42 @@
+---
+title: "Reff_Fish_Slides"
+author: "Rachel Cohen"
+date: "5/29/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Reef Fish Data 
+```{r, out.width = "400px"}
+knitr::include_graphics("images/Sea_Coral_Reef__Fish_Wallpaper_o76pu-300x225.jpg")
+```
+Rachel Cohen
+
+## DATA for the project
+
+-```reef_fish <- read.csv('data/RLSreeffishdataset.csv')```
+- site CG10
+```{r}
+CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG10")
+```
+- site CG11
+```{r}
+CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
+  filter(SiteCode == "CG11") 
+```
+
+
+## Plotting the CG11 Site Facet by Diver
+
+```{r}
+library(ggplot2)
+ggplot(CG11_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+```
+
