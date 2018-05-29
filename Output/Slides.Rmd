@@ -11,27 +11,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Reef Fish Data 
 ```{r, out.width = "400px"}
-knitr::include_graphics("images/Sea_Coral_Reef__Fish_Wallpaper_o76pu-300x225.jpg")
+knitr::include_graphics("../images/Sea_Coral_Reef__Fish_Wallpaper_o76pu-300x225.jpg")
 ```
 Rachel Cohen
 
 ## DATA for the project
 
 -Load all the packages
-```{r}
+```{r, include=FALSE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
 ```
-
--```reef_fish <- read.csv('data/RLSreeffishdataset.csv')```
+-data
+```{r, echo=FALSE}
+reef_fish <- read.csv('../data/RLSreeffishdataset.csv')
+```
 - site CG10
-```{r}
+```{r, echo=FALSE}
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG10")
 ```
 - site CG11
-```{r}
+```{r, echo=FALSE}
 CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG11") 
 ```
@@ -40,7 +42,6 @@ CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>%
 ## Plotting the CG11 Site Facet by Diver
 
 ```{r}
-library(ggplot2)
 ggplot(CG11_site, aes(Family, Total, color = Family)) + 
   geom_point() +
   facet_wrap("Diver") +
