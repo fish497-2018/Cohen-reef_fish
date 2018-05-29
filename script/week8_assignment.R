@@ -1,6 +1,7 @@
 #load the packages needed
 library(dplyr)
 library(ggplot2)
+library(tidyr)
 
 #read in the data
 reef_fish <- read.csv('data/RLSreeffishdataset.csv')
