@@ -23,7 +23,8 @@ library(tidyr)
 ```
 
 ## Read in that data
-
+The data that I chose was from FigShare  [reef_fish](https://figshare.com/articles/RLS_reef_fish_dataset.csv/934320)  
+The data is on reef fish in Australia and New Zealand that was taken over a 3 year period. Each entry has a specific latitude and longitude that corresponds with the site and site code which I use to break up the data since it is so large (over 130,000 entries). Each entry is made by a diver who observed the fish families and counted the totals.
 ```{r, echo=TRUE}
 reef_fish <- read.csv('../data/RLSreeffishdataset.csv')
 ```
