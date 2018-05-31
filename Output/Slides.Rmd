@@ -1,5 +1,5 @@
 ---
-title: "Reff_Fish_Data"
+title: "Reef_Fish_Data"
 author: "Rachel Cohen"
 date: "5/29/2018"
 output: ioslides_presentation
@@ -16,7 +16,7 @@ knitr::include_graphics("../images/reeffish.jpg")
 
 ## Load all the packages
 
-```{r, include=FALSE}
+```{r, include=TRUE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
@@ -30,13 +30,13 @@ reef_fish <- read.csv('../data/RLSreeffishdataset.csv')
 
 ## Separate the data by site
 * site CG10
-<small>
+
 ```{r, echo=TRUE}
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG10")
 ```
 * site CG11
-<small>
+
 ```{r, echo=TRUE}
 CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG11") 
@@ -74,5 +74,17 @@ ggplot(CG11_site, aes(Family, Total, color = Family)) +
   geom_point() +
   facet_wrap("Diver") +
   labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+```
+
+## Average Depth of Common Species
+```{r, echo=FALSE}
+knitr::kable(new_data2 <- reef_fish %>%
+  select(SiteCode, Family, Depth) %>%
+  filter(Family == "Scorpididae" | Family == "Pomacentridae" | Family == "Plesiopidae" | Family == "Enoplosidae") %>% 
+  group_by(Family, SiteCode) %>%
+  summarise(avg_Depth = mean(Depth)) %>%
+  spread(SiteCode, avg_Depth) %>% 
+  select(CG10, CG11))
+
 ```
 
