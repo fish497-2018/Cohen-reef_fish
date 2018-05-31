@@ -1,46 +1,74 @@
 ---
-title: "Reff_Fish_Slides"
+title: "Reff_Fish_Data"
 author: "Rachel Cohen"
 date: "5/29/2018"
 output: ioslides_presentation
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Reef Fish Data 
-```{r, out.width = "400px"}
-knitr::include_graphics("../images/Sea_Coral_Reef__Fish_Wallpaper_o76pu-300x225.jpg")
+## FISHES
+
+```{r, out.width= "700px"}
+knitr::include_graphics("../images/reeffish.jpg")
 ```
-Rachel Cohen
 
-## DATA for the project
+## Load all the packages
 
--Load all the packages
 ```{r, include=FALSE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
 ```
--data
-```{r, echo=FALSE}
+
+## Read in that data
+
+```{r, echo=TRUE}
 reef_fish <- read.csv('../data/RLSreeffishdataset.csv')
 ```
-- site CG10
-```{r, echo=FALSE}
+
+## Separate the data by site
+* site CG10
+<small>
+```{r, echo=TRUE}
 CG10_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG10")
 ```
-- site CG11
-```{r, echo=FALSE}
+* site CG11
+<small>
+```{r, echo=TRUE}
 CG11_site <- select(reef_fish, SiteCode, Diver, Family, Total) %>% 
   filter(SiteCode == "CG11") 
 ```
+  
+## Facet wrap by Family
+Want to see if there is a difference between what divers see at the sight
 
-
-## Plotting the CG11 Site Facet by Diver
-
+```{r}
+ggplot(CG10_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family") +
+  labs(x = "Diver", y = "Total_Fish_Count", color = "Divers")
+```
+  
+## Plotting the CG10 Site by Diver
+```{r}
+ggplot(CG10_site, aes(Family, Total, color = Family)) + 
+  geom_point() +
+  facet_wrap("Diver") +
+  labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+```
+  
+## Facet Plots by family
+```{r}
+ggplot(CG11_site, aes(Diver, Total, color = Diver)) + 
+  geom_point() +
+  facet_wrap("Family") +
+  labs(x = "Diver", y = "Total_Fish_Count", color = "Divers")
+```
+  
+## Plotting the CG11 Site by Diver
 ```{r}
 ggplot(CG11_site, aes(Family, Total, color = Family)) + 
   geom_point() +
