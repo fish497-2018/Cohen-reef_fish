@@ -97,7 +97,13 @@ new_data <- reef_fish %>%
   mutate("avg_Depth") %>% 
   group_by(Family) %>% summarise(avg_Depth, mean(Depth))
   
-  tidyr::spread(Scorpididae, Pomacentridae, Plesiopidae, Enoplosidae)
+new_data2 <- reef_fish %>%
+  select(SiteCode, Family, Depth) %>%
+  filter(Family == "Scorpididae" | Family == "Pomacentridae" | Family == "Plesiopidae" | Family == "Enoplosidae") %>% 
+  group_by(Family, SiteCode) %>%
+  summarise(avg_Depth = mean(Depth)) %>%
+  spread(SiteCode, avg_Depth) %>% 
+  select(CG10, CG11)
 
   
 Scorp_depth <- filter(new_data, Family == "Scorpididae") %>% 
