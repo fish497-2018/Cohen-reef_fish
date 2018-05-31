@@ -119,17 +119,3 @@ Eno_depth <- filter(new_data, Family == "Enoplosidae") %>%
   summarize(avg_depth = mean(Depth))
 head(Eno_depth)
 
-%>% 
-  mutate("avg_Depth") %>% 
-  |SiteCode == "CG11" 
-
-summarise(new_data = c("Scorpididae"), avg_depth = mean(Depth))
-
-family_depth = reef_fish(
-  Site = c("CG10", "CG11"),
-  Family = c("Scorpididae", "Pomacentridae", "Plesiopidae", "Enoplosidae"),
-  Avg_Depth
-  )
- 
-
-
