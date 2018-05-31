@@ -88,3 +88,42 @@ ggplot(CG10_site, aes(Family, Total, color = Family)) +
   geom_point() +
   facet_wrap("Diver") +
   labs(x = "Family", y = "Total_Fish_Count", color = "Family")
+
+#we will make a new dataframe with tidyr to show the data in a new way
+new_data <- reef_fish %>% 
+  select(SiteCode, Family, Depth) %>% 
+  filter(SiteCode == "CG10") %>% 
+  filter(Family == "Scorpididae" | Family == "Pomacentridae" | Family == "Plesiopidae" | Family == "Enoplosidae") %>% 
+  mutate("avg_Depth") %>% 
+  group_by(Family) %>% summarise(avg_Depth, mean(Depth))
+  
+  tidyr::spread(Scorpididae, Pomacentridae, Plesiopidae, Enoplosidae)
+
+  
+Scorp_depth <- filter(new_data, Family == "Scorpididae") %>% 
+  summarize(avg_depth = mean(Depth))
+head(Scorp_depth)
+Poma_depth <- filter(new_data, Family == "Pomacentridae") %>% 
+  summarize(avg_depth = mean(Depth))
+head(Poma_depth)
+Plesi_depth <- filter(new_data, Family == "Plesiopidae") %>% 
+  summarize(avg_depth = mean(Depth))
+head(Plesi_depth)
+Eno_depth <- filter(new_data, Family == "Enoplosidae") %>% 
+  summarize(avg_depth = mean(Depth))
+head(Eno_depth)
+
+%>% 
+  mutate("avg_Depth") %>% 
+  |SiteCode == "CG11" 
+
+summarise(new_data = c("Scorpididae"), avg_depth = mean(Depth))
+
+family_depth = reef_fish(
+  Site = c("CG10", "CG11"),
+  Family = c("Scorpididae", "Pomacentridae", "Plesiopidae", "Enoplosidae"),
+  Avg_Depth
+  )
+ 
+
+
